@@ -1,10 +1,20 @@
-# CazooChallenge
+# AngularCrudExample
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
+## Project decisions
+
+Followed the dumb/smart components approach. Only the containers (smart components) has the responsibility to "talk" with services
+As an example it was created unit tests for the app and car modal components.
+It was created a cars helper to deal with the dictionary that is Responsible to handle with some dynamic data.
+It was created a location-utils to build an url in a more cleaner way.
+It was created a config file with constants to avoid magic strings.
+Since this Challenge was focus on the front end part, it was decided to use a NoSQL database such as Firebase to manage all data in our CRUD operations. (not working, you need to create your own database on firebase)
+Used BEM principle
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve -o` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

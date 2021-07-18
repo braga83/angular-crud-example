@@ -1,0 +1,95 @@
+<div class="app-car-modal__modal-header">
+  <div class="app-car-modal__modal-header__title">{{ data?.id ? config.EDIT_CAR : config.CREATE_CAR }}</div>
+  <ng-container *ngIf="data?.id">
+    <button
+      class="app-car-modal__modal-header__more-opts"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      #menuTrigger
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="delete(carFormGroup.value)">
+        <mat-icon>delete_outline</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+</div>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="carFormGroup">
+    <h4>Maker*</h4>
+    <mat-form-field appearance="fill">
+      <mat-select
+        formControlName="maker"
+        (selectionChange)="getModels($event.value)"
+      >
+        <mat-option *ngFor="let maker of makers" [value]="maker">
+          {{ maker }}
+        </mat-option>
+      </mat-select>
+      <mat-error>You must select a maker</mat-error>
+    </mat-form-field>
+    <h4>Model</h4>
+    <mat-form-field appearance="fill">
+      <mat-select formControlName="model">
+        <mat-option *ngFor="let model of models" [value]="model">
+          {{ model }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h4>Year*</h4>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="year" />
+      <mat-error>You must select a year</mat-error>
+    </mat-form-field>
+    <h4>Color*</h4>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        placeholder="Search color"
+        aria-label="Number"
+        matInput
+        formControlName="color"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let color of filteredColors | async"
+          [value]="color"
+        >
+          {{ color }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error>You must select a color</mat-error>
+    </mat-form-field>
+    <h4>Monthly subscription price</h4>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="monthlyPrice" />
+    </mat-form-field>
+    <h4>Available from</h4>
+    <mat-form-field color="accent" appearance="fill">
+      <input
+        matInput
+        placeholder="mm/dd/yyyy"
+        [matDatepicker]="picker2"
+        formControlName="availableFrom"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="close()">Cancel</button>
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="save(carFormGroup.value)"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+</div>
