@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Project decisions
 
-Followed the dumb/smart components approach. Only the containers (smart components) has the responsibility to "talk" with services<br />
-As an example it was created unit tests for the app and car modal components.<br />
-It was created a cars helper to deal with the dictionary that is Responsible to handle with some dynamic data.<br />
-It was created a location-utils to build an url in a more cleaner way.<br />
-It was created a config file with constants to avoid magic strings.<br />
-Since this Challenge was focus on the front end part, it was decided to use a NoSQL database such as Firebase to manage all data in our CRUD operations. (not working, you need to create your own database on firebase)<br />
-Used BEM principle<br />
+Followed the dumb/smart components approach. Only the containers (smart components) has the responsibility to "talk" with services<p>
+As an example it was created unit tests for the app and car modal components.<p>
+It was created a cars helper to deal with the dictionary that is Responsible to handle with some dynamic data.<p>
+It was created a location-utils to build an url in a more cleaner way.<p>
+It was created a config file with constants to avoid magic strings.<p>
+Since this Challenge was focus on the front end part, it was decided to use a NoSQL database such as Firebase to manage all data in our CRUD operations. (not working, you need to create your own database on firebase)<p>
+Used BEM principle<p>
 
 ## Development server
 
